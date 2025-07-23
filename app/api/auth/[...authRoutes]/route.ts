@@ -1,9 +1,19 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export function GET(){
-   return NextResponse.json({
-        message : "You have visited the auth route"
-    })
+export async function GET(
+    req: NextRequest, 
+    { params }: {
+        params: Promise<{
+            authRoutes: string[]
+        }>
+    }
+) {
+    const { authRoutes } = await params;
+    
+    console.log(authRoutes);
+    
+    return NextResponse.json({
+        message: "You have visited the auth route", 
+        root: authRoutes
+    });
 }
-
-//global catch
