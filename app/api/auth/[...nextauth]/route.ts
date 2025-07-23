@@ -1,0 +1,18 @@
+import NextAuth from "next-auth" ;
+import { CredentialsProvider } from "next-auth/providers/credentials";
+
+const handler  = NextAuth({
+    providers : [
+        CredentialsProvider({
+            name  : "Email" ,
+            credentials : {
+                username : {label : 'email' , type : 'text' , placeholder :'Username , Email'} ,
+                password : {label : 'password ' , type : 'password' , placeholder :'Password'}
+            }
+        })
+
+    ]
+})
+
+export const GET = handler ;
+export const POST = handler; 
