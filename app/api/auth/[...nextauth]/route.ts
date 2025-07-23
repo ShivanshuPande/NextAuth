@@ -1,5 +1,5 @@
 import NextAuth from "next-auth" ;
-import { CredentialsProvider } from "next-auth/providers/credentials";
+import  CredentialsProvider  from "next-auth/providers/credentials";
 
 const handler  = NextAuth({
     providers : [
@@ -8,6 +8,11 @@ const handler  = NextAuth({
             credentials : {
                 username : {label : 'email' , type : 'text' , placeholder :'Username , Email'} ,
                 password : {label : 'password ' , type : 'password' , placeholder :'Password'}
+            }, 
+            async authorize(credentials : any) {
+                return  {
+                    id : "user1"
+                }
             }
         })
 
